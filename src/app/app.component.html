@@ -1,0 +1,57 @@
+<div class="container">
+<br>
+  <h1>{{title}}</h1>
+  <input type="text" [(ngModel)]="filterText" >
+  <button (click)="filtrar()" class="btn btn-primary">Filtrar</button>
+  <br>
+  <button (click)="ordenarPorTitulo()">Ordenar Por Titulo</button>
+  <button (click)="ordenarPorEditorial()">Ordenar Por Editorial</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="col-sm-2">Titulo</th>
+          <th class="col-sm-1">Autor</th>
+          <th class="col-sm-2">Editorial</th>
+          <th class="col-sm-4">descripcion</th>
+          <th class="col-sm-1">..</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let libro of librofiltrados">
+          <th scope="row">{{libro.titulo}}</th>
+          <td>{{libro.autor}}</td>
+          <td>{{libro.editorial}}</td>
+          <td>{{libro.descripcion}}</td>
+          <td><button class="btn btn-success" (click)="seleccionarLibro(libro)">Ver</button></td>
+        </tr>
+      </tbody>
+      
+  </table>
+  <hr><hr>
+  <div *ngIf="libroSeleccionado">
+    <h2>{{libroSeleccionado.titulo}}</h2>
+    <p>{{libroSeleccionado.autor}}</p>
+    <p>{{libroSeleccionado.editorial}}</p>
+    <p>{{libroSeleccionado.descripcion}}</p>
+</div>
+<style>
+  .container {
+    text-align: center;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .btn {
+    margin-top: 10px;
+  }
+  </style>
+</div>
+
+
+
+
+
+
